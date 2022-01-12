@@ -7,7 +7,7 @@ alias l='ls -lav --ignore=.?*'   # show long listing but no hidden dotfiles exce
 alias vi='vim'
 echo "Welcome to Bash"
 export PYTHONPATH=$PYTHONPATH:"/Users/connorsheehan/Library/Python/3.8/lib/python/site-packages/"
-export PS1="[cs@bash] %~$ "
+export PS1="[cs@bash] \w $ "
 alias ls='ls -p'
 alias vi='vim'
 alias svi="sudo vim"
