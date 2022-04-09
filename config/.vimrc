@@ -5,7 +5,7 @@ endif
 "------------------Essentials------------------------------------
 set clipboard=unnamed	" Copies visual mode into mac clipboard
 set background=dark 	" allows vim to adjust to a dark terminal screen
-set tabstop=4 			" max width of tab character
+set tabstop=4			" max width of tab character
 set shiftwidth=4		" width of tab character
 set shortmess+=F 		" Deletes swapfile messages
 set foldenable 			" enable folding
@@ -27,8 +27,8 @@ nnoremap $ <nop>		" eliminate $ use
 nnoremap ^ <nop>		" eliminate ^ use
 nnoremap dE d$			" delete to end of word to d+E
 vmap Y "+y  			" copies with shift+y
-set autoindent 			" indents each line like the last one
-" set smartindent 		" w/ autoindent guesses where you want indents like in python
+" set autoindent 			" indents each line like the last one || problem: when exiting insert mode you go to the line beneath
+set smartindent 		" w/ autoindent guesses where you want indents like in python
 filetype indent on 		" vim indents based on filetype
 filetype plugin on 	
 set scrolloff=8			" keeps your cursor a minimum of 8 spaces above the bottom of the screen
@@ -52,20 +52,22 @@ highlight LineNr ctermfg=DarkGrey
 
 "----------------------- Plugins -----------------------------------
 
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'preservim/nerdtree'
+Plugin 'pangloss/vim-javascript'
+call vundle#end()           
 
+let g:javascript_plugin_jsdoc = 1
+let g:javascript_plugin_flow = 1
 
 "----------------------- Testing ----------------------------------
 set cmdheight=1			" Height of the command bar
-set magic 				" For regular expressions turn magic on
 set mouse=a				" tmux + vim scrolling ability
 
 " Turns off backups and swapfiles
 set nobackup
 set nowb
-
-" Visual mode pressing * or # searches for the current selection
-vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
-vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 
 set undofile " Maintain undo history between sessions
 set undodir=~/.vim/undodir
@@ -85,23 +87,6 @@ function! Comment()
 	call append(line('.'), ft . "--------------------- ---------------------------------")
 endfunction
 nnoremap <C-g> :call Comment()<CR>
-
-
-" Toggle paste mode on and off
-map <leader>pp :setlocal paste!<cr>
-
-" Returns true if paste mode is enabled
-function! HasPaste()
-    if &paste
-        return 'PASTE MODE  '
-    endif
-    return ''
-endfunction
-
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'preservim/nerdtree'
-call vundle#end()           
 
 "---------------------- End ---------------------------------------
 " Source a global configuration file if available
