@@ -11,6 +11,7 @@ mkdir ~/.vim/undodir
 mkdir ~/git 
 git clone https://github.com/conacts/files-to-transfer ~/git
 mv files-to-transfer/config/.vimrc files-to-transfer/config/.tmux.conf files-to-transfer/config/.bashrc ~
+git config --global credential.helper store
 	sudo "$0" "$@"
 	if [ -f "/etc/arch-release" ]
 	then
