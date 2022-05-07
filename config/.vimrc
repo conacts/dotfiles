@@ -53,10 +53,10 @@ highlight LineNr ctermfg=DarkGrey
 "----------------------- Plugins -----------------------------------
 
 set rtp+=~/.vim/bundle/Vundle.vim
-call plug#begin()
-Plug 'preservim/nerdtree'
-Plug 'pangloss/vim-javascript'
-call plug#end()           
+call vundle#begin()
+Plugin 'preservim/nerdtree'
+Plugin 'pangloss/vim-javascript'
+call vundle#end()           
 
 let g:javascript_plugin_jsdoc = 1
 let g:javascript_plugin_flow = 1
