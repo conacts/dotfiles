@@ -77,7 +77,7 @@ clone_tmux_tpm() {
 move_dotfiles() {
     echo "Moving dotfiles..."
     local config_dir="$(pwd)/config"
-    local dotfiles=(".bashrc" ".tmux.conf" ".vimrc" ".zshrc")
+    local dotfiles={".bashrc" ".tmux.conf" ".vimrc" ".zshrc"}
     
     for file in "${dotfiles[@]}"; do
         local target_file="$HOME/$file"
