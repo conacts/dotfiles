@@ -76,16 +76,21 @@ clone_tmux_tpm() {
 # Function to move dotfiles to their proper directories
 move_dotfiles() {
     echo "Moving dotfiles..."
-    local config_dir="$(pwd)/config"
-    local dotfiles={".bashrc" ".tmux.conf" ".vimrc" ".zshrc"}
+    local config_dir="$(pwd)/dotfiles/config"
     
-    for file in "${dotfiles[@]}"; do
-        local target_file="$HOME/$file"
-        if [ -e "$target_file" ]; then
-            mv "$target_file" "$target_file.bak"
-        fi
-        mv "$config_dir/$file" "$HOME"
-    done
+    # Check if the "config" directory exists
+    if [ -d "$config_dir" ]; then
+        # Loop through each file in the "config" directory
+        for file in "$config_dir"/*; do
+            # Check if the file is a regular file (not a directory)
+            if [ -f "$file" ]; then
+                mv "$file" "$HOME/"
+            fi
+        done
+    else
+        echo "Error: 'dotfiles/config' directory not found or is not a directory."
+        exit 1
+    fi
 }
 
 # Check the operating system and perform the appropriate action
