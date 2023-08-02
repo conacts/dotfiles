@@ -52,15 +52,6 @@ highlight LineNr ctermfg=DarkGrey
 
 "----------------------- Plugins -----------------------------------
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'preservim/nerdtree'
-Plugin 'pangloss/vim-javascript'
-call vundle#end()           
-
-let g:javascript_plugin_jsdoc = 1
-let g:javascript_plugin_flow = 1
-
 "----------------------- Testing ----------------------------------
 set cmdheight=1			" Height of the command bar
 set mouse=a				" tmux + vim scrolling ability
