@@ -76,15 +76,25 @@ clone_tmux_tpm() {
 # Function to move dotfiles to their proper directories
 move_dotfiles() {
     echo "Moving dotfiles..."
-    local config_dir="$(pwd)/dotfiles/config"
+    local config_dir="$HOME/dotfiles/config"
     
     # Check if the "config" directory exists
     if [ -d "$config_dir" ]; then
         # Loop through each file in the "config" directory
-        for file in "$config_dir"/*; do
+        for file in "$config_dir"/.*; do
             # Check if the file is a regular file (not a directory)
             if [ -f "$file" ]; then
-                mv "$file" "$HOME/"
+                local filename=$(basename "$file")
+                local destination="$HOME/$filename"
+                
+                # Check if a file with the same name already exists in the destination
+                if [ -e "$destination" ]; then
+                    echo "Conflict: File '$filename' already exists in the destination. Renaming to '$filename.bak'"
+                    mv "$destination" "$destination.bak"
+                fi
+                
+                echo "Moving '$filename' to '$HOME/'"
+                cp "$file" "$HOME/"
             fi
         done
     else
@@ -92,6 +102,9 @@ move_dotfiles() {
         exit 1
     fi
 }
+
+# Call the function to move the dotfiles
+move_dotfiles
 
 # Check the operating system and perform the appropriate action
 if [[ "$OSTYPE" == "darwin"* ]]; then
