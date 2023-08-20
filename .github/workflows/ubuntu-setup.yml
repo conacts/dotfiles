@@ -1,4 +1,4 @@
-name: ubuntu-actions
+name: ubuntu-setup
 on:
   push:
     branches: [ "main" ]
@@ -11,8 +11,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Verbose ubuntu script
+      - name: Run verbose ubuntu script
         run: |
           chmod +x startup.sh
           VERBOSE=1 ./startup.sh
-
+      - name: Prove files exist
+        run: ls -la ~
