@@ -91,7 +91,7 @@ clone_tmux_tpm() {
 # Function to move dotfiles to their proper directories
 move_dotfiles() {
     log "Moving dotfiles..."
-    local config_dir="$HOME/dotfiles/config"
+    local config_dir="./config"
     
     # Check if the "config" directory exists
     if [ -d "$config_dir" ]; then
@@ -117,9 +117,6 @@ move_dotfiles() {
         exit 1
     fi
 }
-
-# Call the function to move the dotfiles
-move_dotfiles
 
 # Check the operating system and perform the appropriate action
 if [[ "$OSTYPE" == "darwin"* ]]; then
