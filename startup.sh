@@ -55,6 +55,10 @@ clone_tmux_tpm() {
     git clone https://github.com/tmux-plugins/tpm "$target_dir"
 }
 
+run_packer_sync() {
+    log "Running PackerSync in Neovim..."
+    nvim --headless +PackerSync +qall
+}
 
 ### macOS Section ###
 install_brew() {
@@ -141,6 +145,7 @@ elif [ -f "/etc/debian_version" ] || [ -f "/etc/debian_release" ]; then
     add_debian_ppas
     install_debian_packages
     clone_neovim_repository
+    run_packer_sync
     clone_tmux_tpm
     move_dotfiles
 
