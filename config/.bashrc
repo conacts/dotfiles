@@ -1,7 +1,6 @@
 #
 # ~/.bashrc
 #
-echo "Welcome to Bash"
 export PS1="[cs@bash] \W $ "
 
 alias ls='ls --color=auto'

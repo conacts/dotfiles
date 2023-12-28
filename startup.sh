@@ -60,6 +60,12 @@ run_packer_sync() {
     nvim --headless +PackerSync +qall
 }
 
+configure_git() {
+    local verbose="$1"
+    log "Configuring Git credential helper..." "$verbose"
+    git config --global credential.helper store
+}
+
 ### macOS Section ###
 install_brew() {
     log "Installing Homebrew..."
@@ -127,6 +133,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
         install_brew
     fi
     install_macos_packages
+    configure_git "$VERBOSE"
     macos_configuration
     clone_macos_repositories
     move_dotfiles
@@ -135,6 +142,7 @@ elif [ -f "/etc/arch-release" ]; then
     log "Detected Arch Linux"
     update_arch
     install_arch_packages
+    configure_git "$VERBOSE"
     clone_neovim_repository
     clone_tmux_tpm
     move_dotfiles
@@ -144,6 +152,7 @@ elif [ -f "/etc/debian_version" ] || [ -f "/etc/debian_release" ]; then
     update_debian
     add_debian_ppas
     install_debian_packages
+    configure_git "$VERBOSE"
     clone_neovim_repository
     run_packer_sync
     clone_tmux_tpm
