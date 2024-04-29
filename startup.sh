@@ -117,7 +117,7 @@ add_debian_ppas() {
 
 install_debian_packages() {
     log "Installing packages on Debian-based Linux..."
-    sudo apt install -y git neovim tmux htop tree neofetch python3 python3-pip openvpn openssh-server
+    sudo apt install -y git tmux htop tree neofetch python3 python3-pip openvpn openssh-server # note, I left out neovim to install from source
 }
 
 
