@@ -11,7 +11,7 @@ log() {
 
 move_dotfiles() {
     log "Moving dotfiles..."
-    local config_dir="./config"
+    local config_dir="~/dotfiles/config"
     if [ -d "$config_dir" ]; then
         for file in "$config_dir"/.*; do
             if [ -f "$file" ]; then
@@ -33,11 +33,11 @@ move_dotfiles() {
 
 install_neovim_from_source() {
     log "Installing Neovim from source..."
-    sudo apt install -y ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip
+    apt install -y ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip
     git clone https://github.com/neovim/neovim.git
     cd neovim
     make CMAKE_BUILD_TYPE=RelWithDebInfo
-    sudo make install
+    make install
 }
 
 clone_neovim_repository() {
@@ -106,13 +106,13 @@ clone_macos_repositories() {
 ### Ubuntu/Debian Section ###
 update_debian() {
     log "Updating Debian-based Linux..."
-    sudo apt update
+    apt update
 }
 
 add_debian_ppas() {
     log "Adding PPAs on Debian-based Linux..."
-    sudo add-apt-repository -y ppa:neovim-ppa/unstable
-    sudo apt update
+    add-apt-repository -y ppa:neovim-ppa/unstable
+    apt update
 }
 
 install_debian_packages() {
