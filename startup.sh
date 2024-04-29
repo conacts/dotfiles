@@ -31,6 +31,15 @@ move_dotfiles() {
     fi
 }
 
+install_neovim_from_source() {
+    log "Installing Neovim from source..."
+    sudo apt install -y ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip
+    git clone https://github.com/neovim/neovim.git
+    cd neovim
+    make CMAKE_BUILD_TYPE=RelWithDebInfo
+    sudo make install
+}
+
 clone_neovim_repository() {
     log "Cloning Neovim repository..."
     local target_dir=~/.config/nvim
@@ -152,6 +161,7 @@ elif [ -f "/etc/debian_version" ] || [ -f "/etc/debian_release" ]; then
     update_debian
     add_debian_ppas
     install_debian_packages
+    install_neovim_from_source
     configure_git "$VERBOSE"
     clone_neovim_repository
     run_packer_sync
