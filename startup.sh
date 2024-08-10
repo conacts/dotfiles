@@ -64,11 +64,6 @@ clone_tmux_tpm() {
     git clone https://github.com/tmux-plugins/tpm "$target_dir"
 }
 
-run_packer_sync() {
-    log "Running PackerSync in Neovim..."
-    nvim --headless +PackerSync +qall
-}
-
 configure_git() {
     local verbose="$1"
     log "Configuring Git credential helper..." "$verbose"
@@ -117,19 +112,19 @@ add_debian_ppas() {
 
 install_debian_packages() {
     log "Installing packages on Debian-based Linux..."
-    sudo apt install -y git tmux htop tree neofetch python3 python3-pip openvpn openssh-server # note, I left out neovim to install from source
+    apt install -y git tmux htop tree neofetch python3 python3-pip openvpn openssh-server # note, I left out neovim to install from source
 }
 
 
 ### Arch Section ###
 update_arch() {
     log "Updating Arch Linux..."
-    sudo pacman -Syyu
+    pacman -Syyu
 }
 
 install_arch_packages() {
     log "Installing packages on Arch Linux..."
-    sudo pacman -S git neovim tmux htop tree neofetch python openvpn openssh yay
+    pacman -S git neovim tmux htop tree neofetch python openvpn openssh yay
 }
 
 
@@ -164,7 +159,6 @@ elif [ -f "/etc/debian_version" ] || [ -f "/etc/debian_release" ]; then
     install_neovim_from_source
     configure_git "$VERBOSE"
     clone_neovim_repository
-    run_packer_sync
     clone_tmux_tpm
     move_dotfiles
 
