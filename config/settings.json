@@ -1,0 +1,94 @@
+{
+    "workbench.colorTheme": "GitHub Dark High Contrast",
+    "editor.inlineSuggest.enabled": true,
+    "explorer.confirmDelete": false,
+    "vim.useSystemClipboard": true,
+    "vim.visualModeKeyBindingsNonRecursive": [],
+    "vim.insertModeKeyBindings": [
+        {
+            "before": [",", "."],
+            "after": ["<Esc>"]
+        }
+    ],
+    "vim.normalModeKeyBindings": [
+        {
+            "before": ["E"],
+            "after": ["$"]
+        },
+        {
+            "before": ["B"],
+            "after": ["^"]
+        },
+        {
+            "before": ["u"],
+            "after": [],
+            "commands": [
+                {
+                    "command": "undo",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": ["<C-r>"],
+            "after": [],
+            "commands": [
+                {
+                    "command": "redo",
+                    "args": []
+                }
+            ]
+        }
+    ],
+    "explorer.confirmDragAndDrop": false,
+    "files.autoSave": "afterDelay",
+    "security.workspace.trust.untrustedFiles": "open",
+    "editor.formatOnSave": true,
+    "editor.fontVariations": false,
+    "[python]": {
+        "editor.insertSpaces": true,
+        "editor.tabSize": 4
+    },
+    "workbench.startupEditor": "none",
+    "javascript.updateImportsOnFileMove.enabled": "never",
+    "editor.semanticTokenColorCustomizations": {},
+    "notebook.editorOptionsCustomizations": {},
+    "[scss]": {
+        "editor.defaultFormatter": "michelemelluso.code-beautifier"
+    },
+    "[html]": {
+        "editor.defaultFormatter": "vscode.html-language-features"
+    },
+    "[typescriptreact]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    },
+    "[typescript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    },
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.detectIndentation": false,
+    "editor.insertSpaces": false,
+    "prettier.bracketSpacing": false,
+    "prettier.tabWidth": 4,
+    "prettier.withNodeModules": true,
+    "editor.codeActionsOnSave": {},
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "github.copilot.enable": {
+        "*": true,
+        "plaintext": false,
+        "markdown": false,
+        "scminput": false
+    },
+    "yaml.customTags": [],
+    "workbench.colorCustomizations": {},
+    "editor.minimap.enabled": false,
+    "window.zoomLevel": 1,
+    "files.exclude": {
+        "**/.DS_Store": false,
+        "**/.git": false
+    },
+    "editor.accessibilitySupport": "off",
+    "prisma.showPrismaDataPlatformNotification": false,
+    "github.copilot.editor.enableAutoCompletions": true,
+    "explorer.confirmPasteNative": false
+}
